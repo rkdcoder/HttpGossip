@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <PackageId>HttpGossip</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Rodrigo Kmiecik</Authors>
+    <Company>rkd.com.br</Company>
+    <Product>HttpGossip Nuget</Product>
+    <PackageDescription>HTTP request/response logging for ASP.NET Core with fire-and-forget persistence via Dapper. Writes to SQL Server, PostgreSQL, MySQL, or SQLite using a bounded queue so your APIs are never blocked. Optional schema bootstrap helper included.</PackageDescription>
+    <Description>HttpGossip is a lightweight HTTP logging middleware for ASP.NET Core. It captures request/response metadata and bodies (with safe truncation), enqueues logs with a bounded Channel, and persists asynchronously using Dapper—so failures never penalize your API. Supports SQL Server, PostgreSQL, MySQL, and SQLite. Includes an optional schema helper (EnsureLogTableAsync) to create the table with a separate elevated connection. Fluent registration, single-project library, production-friendly defaults.</Description>
+    <RepositoryUrl>https://github.com/rkdcoder/httpgossip</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/rkdcoder/httpgossip</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageTags>http-logging;middleware;aspnetcore;dapper;sqlserver;postgresql;mysql;sqlite;observability;telemetry;audit;fire-and-forget;queue;background-service;dotnet;webapi;logging;redaction</PackageTags>
+    <Title>HttpGossip</Title>
+    <Summary>Fire-and-forget HTTP logging for ASP.NET Core with Dapper and SQL providers</Summary>
+    <ReadMe>README.md</ReadMe>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.8" />
+    <PackageReference Include="MySqlConnector" Version="2.4.0" />
+    <PackageReference Include="Npgsql" Version="9.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>
