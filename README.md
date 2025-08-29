@@ -1,7 +1,7 @@
 # HttpGossip – Fire-and-Forget HTTP Logging for ASP.NET Core (.NET 8+)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/rkdcoder/Http-Gossip/main/src/HttpGossip/icon.png" width="128" alt="HttpGossip logo" />
+  <img src="https://raw.githubusercontent.com/rkdcoder/HttpGossip/main/src/HttpGossip/icon.png" width="128" alt="HttpGossip logo" />
 </p>
 
 [![NuGet](https://img.shields.io/nuget/v/HttpGossip.svg)](https://www.nuget.org/packages/HttpGossip)
