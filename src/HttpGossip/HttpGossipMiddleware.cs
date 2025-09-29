@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Diagnostics;
+using System.Security.Claims;
 using System.Text;
 
 namespace HttpGossip
@@ -98,7 +99,7 @@ namespace HttpGossip
                     LogIsSuccess = isSuccess,
                     LogStatusCode = statusCode,
                     LogException = exceptionString,
-                    LogUserName = context.User.Identity?.IsAuthenticated == true ? context.User.Identity?.Name : null,
+                    LogUserName = GetUserName(context.User),
                     LogLocale = context.Request.Headers["Accept-Language"].FirstOrDefault(),
                     LogMethod = context.Request.Method,
                     LogIsHttps = context.Request.IsHttps,
@@ -171,6 +172,18 @@ namespace HttpGossip
             if (remaining == 0)
                 return text + " [TRUNCATED]";
             return text;
+        }
+
+        static string? GetUserName(ClaimsPrincipal user)
+        {
+            if (user?.Identity?.IsAuthenticated != true) return null;
+
+            return user.Identity?.Name
+                ?? user.FindFirst(ClaimTypes.Name)?.Value
+                ?? user.FindFirst("name")?.Value
+                ?? user.FindFirst("preferred_username")?.Value
+                ?? user.FindFirst("unique_name")?.Value
+                ?? user.FindFirst(ClaimTypes.Email)?.Value;
         }
 
         private static string SerializeHeaders(IHeaderDictionary headers) =>
